@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
-
+    private int counter ;
     @GetMapping("/home")
     @ResponseBody
     public String home(){
@@ -16,5 +16,11 @@ public class HomeController {
     @ResponseBody
     public String bye(){
         return "bye";
+    }
+    @GetMapping("/plus")
+    @ResponseBody
+    public int plus(){
+        counter++;
+        return counter;
     }
 }
