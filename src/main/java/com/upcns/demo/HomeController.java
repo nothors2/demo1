@@ -1,12 +1,14 @@
 package com.upcns.demo;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Controller
@@ -43,11 +45,11 @@ public class HomeController {
     @ResponseBody
     //
     public Map<String,Object> mapList(){
-        Map<String,Object> map = new HashMap<>(){{
+        Map<String,Object> map = new LinkedHashMap<>(){{
             put("james","test");
             put("james",new Car(1,"james","blue"));
             put("james2",new Car(2,"james2","red"));
-            put("james3",new Car2(2,"james2","red"));
+            put("james3",new Car2(3,"james3","white"));
         }};
         return map;
     }
@@ -76,6 +78,7 @@ public class HomeController {
         }
     }
     @AllArgsConstructor
+    @Getter
     //Lombok이 있으면 생략가능 (생성자,getter)
     class Car2{
         private final int id;
