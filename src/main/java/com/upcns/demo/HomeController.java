@@ -1,5 +1,8 @@
 package com.upcns.demo;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.stereotype.Controller;
@@ -7,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -85,5 +89,21 @@ public class HomeController {
         private final String name;
         private final String color;
 
+    }
+
+    @GetMapping("/cookie/increase")
+    @ResponseBody
+    //
+    public void cookieIncrease(HttpServletRequest req, HttpServletResponse resp){
+        int count = 0;
+        if(req.getCookies()!=null){
+            count = Arrays.stream(req.getCookies())
+                    .filter(cookie -> cookie.getName().equals("count"))
+                    .map(cookie -> cookie.getValue())
+                    .mapToInt(Integer::parseInt)
+                    .findFirst()
+                    .orElse(0);
+        }
+        resp.addCookie(new Cookie("count",String.valueOf(count+1)));
     }
 }
