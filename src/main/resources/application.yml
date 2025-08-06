@@ -16,7 +16,8 @@ spring:
     #url: jdbc:mysql://localhost:3306/basic1__dev?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
     username: demo
     password: demo
-    driver-class-name: org.mariadb.jdbc.Driver #com.mysql.cj.jdbc.Driver
+    driver-class-name: org.mariadb.jdbc.Driver
+    #com.mysql.cj.jdbc.Driver
 
   # server:
   # port: 8080
