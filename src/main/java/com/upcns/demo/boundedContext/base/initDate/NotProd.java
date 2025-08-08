@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-@Profile({"local", "test"})
+@Profile({"local", "test","postgre"})
 // dev : 개발 환경
 // test : 테스트 환경
 // prod : 운영 환경
